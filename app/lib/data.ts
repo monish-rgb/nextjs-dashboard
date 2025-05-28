@@ -8,6 +8,9 @@ import {
   Revenue,
 } from './definitions';
 import { formatCurrency } from './utils';
+import {db} from '@vercel/postgres'
+import dotenv from 'dotenv';
+dotenv.config();
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
@@ -21,7 +24,7 @@ export async function fetchRevenue() {
 
     const data = await sql<Revenue[]>`SELECT * FROM revenue`;
 
-    // console.log('Data fetch completed after 3 seconds.');
+    //console.log('Data fetch completed after 3 seconds.');
 
     return data;
   } catch (error) {
@@ -216,3 +219,15 @@ export async function fetchFilteredCustomers(query: string) {
     throw new Error('Failed to fetch customer table.');
   }
 }
+
+// export async function fetchInvoiceById(id: string) {
+//   try {
+//     // ...
+ 
+//     console.log(invoice); // Invoice is an empty array []
+//     return invoice[0];
+//   } catch (error) {
+//     console.error('Database Error:', error);
+//     throw new Error('Failed to fetch invoice.');
+//   }
+// }

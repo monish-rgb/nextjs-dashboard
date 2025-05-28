@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 //import postgres from 'postgres';
 import { invoices, customers, revenue, users } from 'app/lib/placeholder-data';
-import {db,createClient} from '@vercel/postgres';
+import {db} from '@vercel/postgres';
 import dotenv from 'dotenv';
 dotenv.config();
 
